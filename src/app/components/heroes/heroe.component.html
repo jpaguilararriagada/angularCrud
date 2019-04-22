@@ -29,10 +29,12 @@
 
             <div class="form-group">
 
-                <button type="submit" [disabled]="!forma.valid" class="btn btn-outline-primary"> Guardar Cambios</button>
+                <button type="submit" *ngIf="id==='nuevo'"  [disabled]="!forma.valid" class="btn btn-outline-primary"> Crear</button>
+                <button type="submit" *ngIf="id!=='nuevo'"  [disabled]="!forma.valid" class="btn btn-outline-primary"> Actualizar</button>
             </div>
         </form>
 
 
     </div>
+
 </div>

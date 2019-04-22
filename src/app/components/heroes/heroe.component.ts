@@ -23,7 +23,7 @@ export class HeroeComponent implements OnInit {
   };
 
   mensaje: string = '';
-
+key$: string = '';
   nuevo: boolean = false;
   id: string;
   constructor( private _heroesService: HeroesService,
@@ -39,6 +39,7 @@ export class HeroeComponent implements OnInit {
                                             .subscribe( data => {
                                             console.log(data);
                                             this.heroe = data;
+                                            console.log(this.id);
                                             } )
                       }
                     }
