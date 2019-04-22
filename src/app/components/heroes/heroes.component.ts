@@ -29,7 +29,8 @@ export class HeroesComponent implements OnInit {
     confirmButtonText: "Si, elimina el registro !",
     
     cancelButtonText: "No, cancelalo !",
-    showLoaderOnConfirm: true      }).then(  data => {
+    showLoaderOnConfirm: true 
+       }).then(  data => {
         if (data.value) {
           this._heroesSerive.borrarHeroe($key)
           .subscribe( data => {
@@ -51,7 +52,7 @@ export class HeroesComponent implements OnInit {
   obtenerHeroes() {
     this._heroesSerive .obtenerHeroes()
                         .subscribe( data => {
-                          console.log(data);
+                        
                           this.heroes = data;
                           this.loading = false;
                         } )
