@@ -12,6 +12,7 @@ import { APP_ROUTING } from './app.routes'; // RUTAS
 import { HeroesService } from './services/heroes.service';
 import { KeysPipe } from './pipes/keys.pipe';
 
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -24,10 +25,12 @@ import { KeysPipe } from './pipes/keys.pipe';
     BrowserModule,
     HttpClientModule,
     APP_ROUTING,
-    FormsModule
+    FormsModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     HeroesService
+    
   ],
   bootstrap: [AppComponent]
 })

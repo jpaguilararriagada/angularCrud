@@ -26,7 +26,7 @@ nuevoHeroe( heroe:Heroe) {
   return this.http.post<Heroe>( this.heroesURL, heroe , httpOptions )
         .pipe(
         map( res => {
-          console.log(res.name);
+          console.log('prueba',res.name);
           return res;
         }));
   }

@@ -3,8 +3,7 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Heroe } from '../../interfaces/heroe.interface';
 import { Router, ActivatedRoute } from '@angular/router';
-
-
+import swal from 'sweetalert2';
 
 
 
@@ -22,6 +21,8 @@ export class HeroeComponent implements OnInit {
     bio: '',
     casa: 'Marvel'
   };
+
+  mensaje: string = '';
 
   nuevo: boolean = false;
   id: string;
@@ -52,14 +53,14 @@ export class HeroeComponent implements OnInit {
     if (this.id == 'nuevo') {
       this._heroesService.nuevoHeroe(this.heroe)
       .subscribe( (data: any) => {
-        console.log(data);
+        swal.fire('Operación realizada con éxito',`El heroe <strong>${this.heroe.nombre}</strong> ha sido agregado con éxito. `,'success');
           this.router.navigate(['/heroe', data.name]);
       } ,
       error => console.log(error));
     } else {
       this._heroesService.actualizarHeroe(this.heroe, this.id)
       .subscribe( (data: any) => {
-        console.log(data);
+        swal.fire('Operación realizada con éxito',`El heroe <strong>${this.heroe.nombre}</strong> ha sido modificado con éxito. `,'info');
       } ,
       error => console.log(error));
     }
