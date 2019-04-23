@@ -51,7 +51,7 @@ export class HeroesComponent implements OnInit {
 
   obtenerHeroes() {
     this._heroesSerive .obtenerHeroes()
-                        .subscribe( data => {
+                        .subscribe( (data : any) => {
                         
                           this.heroes = data;
                           this.loading = false;
