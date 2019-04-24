@@ -1,9 +1,9 @@
-# Demo
-https://jpaguilararriagada.github.io/angularCrud/heroes
-
 # Heroesapp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
+Este proyecto fue realizado con el proposito de aprender las cosas basicas de Angular tales como el uso de Forms, validaciones , enrutamiento, interfaces, HttpClient, uso de API de FireBase , etc...
+
+# Demo
+https://jpaguilararriagada.github.io/angularCrud/heroes
 
 ## Development server
 
