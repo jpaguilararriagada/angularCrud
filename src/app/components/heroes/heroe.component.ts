@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { Heroe } from '../../interfaces/heroe.interface';
 import { Router, ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+
 
 
 
@@ -26,22 +28,23 @@ export class HeroeComponent implements OnInit {
 key$: string = '';
   nuevo: boolean = false;
   id: string;
-  constructor( private _heroesService: HeroesService,
+  constructor(  private ngxService: NgxUiLoaderService
+                ,private _heroesService: HeroesService,
                 private router: Router,
-                private activatedRouter: ActivatedRoute) {
+                private activatedRouter: ActivatedRoute) 
+                {
+                  this.ngxService.start();
                   this.activatedRouter.params.subscribe(
                     parametros => {
 
                       this.id = parametros['id'];
                       if (this.id !== 'nuevo') {
-                        console.log('entro al nuevo');
                         this._heroesService.obtenerHeroe(this.id)
                                             .subscribe( data => {
-                                            console.log(data);
                                             this.heroe = data;
-                                            console.log(this.id);
                                             } )
                       }
+                      this.ngxService.stop();
                     }
                   )
                 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroesService } from '../../services/heroes.service';
 import swal from 'sweetalert2';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
+
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
@@ -10,15 +12,18 @@ export class HeroesComponent implements OnInit {
 
 
   heroes: any[] = [];
-  loading: boolean = true;
-  constructor(private _heroesSerive: HeroesService) {
+  loading: boolean = false;
 
+  constructor(private _heroesSerive: HeroesService, private ngxService: NgxUiLoaderService) {
+    this.ngxService.start(); 
     this.obtenerHeroes();
+  
 
   }
-
   ngOnInit() {
+
   }
+  
 
   borrarHeroe($key: string) {
     swal.fire({  title: "Estas seguro que deseas eliminar el registro?",
@@ -50,11 +55,13 @@ export class HeroesComponent implements OnInit {
   }
 
   obtenerHeroes() {
+   
     this._heroesSerive .obtenerHeroes()
                         .subscribe( (data : any) => {
                         
                           this.heroes = data;
-                          this.loading = false;
+                          this.ngxService.stop(); 
+                      
                         } )
   }
 
